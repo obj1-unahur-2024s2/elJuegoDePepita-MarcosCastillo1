@@ -4,7 +4,11 @@ import wollok.game.*
 object pepita {
 
 	var property energia = 100
-	var property position = game.origin()
+	var property position = game.at(0, 2)
+	var property  seguidor = silvestre
+
+	
+
 
 	method image() {
 		return if (self.estaEnElNido()) "pepita-grande.png" else "pepita.png"
@@ -21,6 +25,10 @@ object pepita {
 	method irA(nuevaPosicion) {
 		self.vola(position.distance(nuevaPosicion))
 		position = nuevaPosicion
+		if (self.position().x() > 3){
+			seguidor.position(game.at(position.x(), seguidor.position().y()))
+		}
+		
 	}
 
 	method estaCansada() {
@@ -29,7 +37,7 @@ object pepita {
 
 	method estaEnElNido() {
 		
-		return false // Reemplazar por el código correcto
+		return self.position() == nido.position()
 	}
 
 }
