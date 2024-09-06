@@ -6,7 +6,7 @@ import comidas.*
 object nido {
 	
 	method image() = "nido.png" 
-	method position() = game.at(game.width() - 1, game.height() -1) 
+	method position() = game.at(game.width() - 2, game.height() -2) 
 }
 
 object silvestre {
@@ -15,6 +15,12 @@ object silvestre {
 	method image() = "silvestre.png"
 
 	method siguiente() = manzana 
+
+	method perseguirPepita() {
+		if(pepita.position().x()> 3)
+		position = game.at( pepita.position().x(), self.position().y())
+	  
+	}
 
 
 }
